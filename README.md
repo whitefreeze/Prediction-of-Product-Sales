@@ -84,6 +84,27 @@ Looking at the top five most important features, we can see the following:
 * **Outlet_Type_Supermarket Type1**: is the fourth-most important feature.
 * **Outlet_Type_Supermarket Type2**: is the fifth-most important feature and is about 75% the importance of the second place feature.
 
+### SHAP Summary Plots & Interpretations
+
+#### SHAP Bar Plot
+
+![PPS_SHAP_bar_top5!](https://github.com/whitefreeze/Prediction-of-Product-Sales/assets/13343127/210bd0b3-1f73-4bb9-bbcb-45c40eb5adfe)
+
+**Feature Importance:** SHAP vs Decision Tree Regression Built-in Method
+
+Comparing the top five most important features between the SHAP calculations and the Decision Tree Regression's built-in method, we can see that order notwithstanding, the top five are the same, in addition to the top feature ('Item_MRP'), which is the same in both. 
+
+#### SHAP Dot Plot
+
+![PPS_SHAP_dot_top5!](https://github.com/whitefreeze/Prediction-of-Product-Sales/assets/13343127/735e8cbd-de1c-454b-bf23-9bb2f6e86bb4)
+
+**Feature Importance:** SHAP Dot Plot - Top Three (3)
+
+Let's look at the top three most important features as determined by the SHAP dot plot and see how they influence the model's predictions.
+1. As 'Item_MRP' increases in value, it increases the target ('Item_Outlet_Sales') most drastically.
+2. As 'Outlet_Type_Supermarket Type1' increases in value, only trailing behind 'Item_MRP', it also drastically increases the target ('Item_Outlet_Sales'). 
+3. As 'Outlet_Type_Supermarket Type3' increases, just like the top two, it also strongly increases the value of the target. 
+
 ## Limitations & Next Steps
 
 While this model can be useful if implemented in a strategic manner, it would be better to try more models and see if they can perform better than the DecisionTreeRegressor using default hyperparameters. When the best model is found using default hyperparameters, then the hyperparameters of that model should then be tuned in order to maximize the predictive power of the model. 
