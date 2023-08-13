@@ -105,6 +105,79 @@ Let's look at the top three most important features as determined by the SHAP do
 2. As 'Outlet_Type_Supermarket Type1' increases in value, only trailing behind 'Item_MRP', it also drastically increases the target ('Item_Outlet_Sales'). 
 3. As 'Outlet_Type_Supermarket Type3' increases, just like the top two, it also strongly increases the value of the target. 
 
+
+### SHAP Force Plot/LIME Tabular Explanations & Interpretations
+
+For the both the SHAP Force Plot and the LIME explanation, we have selected two specific rows to dissect: 
+1. The row with the item having the highest target ('Item_Outlet_Sales') value.
+2. The row with the item having the lowest target ('Item_Outlet_Sales') value.
+
+We chose these two observations to gain insight as two why they had the most extreme target values.
+
+#### LIME Tabular Explanation Plot: Minimum Target Value
+
+![PPS_LIME_target_min](https://github.com/whitefreeze/Prediction-of-Product-Sales/assets/13343127/af42f78f-a7ae-48ac-acf3-7d45f86bee69)
+
+**Feature Importance:** Minimum Target Value Explanation
+
+From the visualization above, we can see that for the target's minimum value observation, these were the features that most heavily influenced the low predictions, according to LIME: 
+* The item was NOT sold from any of the 'Outlet_Type_Supermarket Types' (1,2 or 3): a negative influence (-).
+* The Item_MRP was less than 99.43: a negative influence (-).
+* The other factors that most heavily influenced the prediction is type of food category that it was not a part of:
+> * NOT a Household Item: a negative influence (-).
+> * NOT a Starchy Food Item: a negative influence (-).
+> * NOT Bread-type Item: a negative influence (-).
+> * NOT Seafood Item: a negative influence (-).
+> * NOT Fruits & Vegetables Item: a negative influence (-).
+> * NOT an item of type 'Others': a POSITIVE influence (+).
+
+#### LIME Tabular Explanation Plot: Maximum Target Value
+
+![PPS_LIME_target_max](https://github.com/whitefreeze/Prediction-of-Product-Sales/assets/13343127/4de93696-20e4-45b1-ab95-62ccffd04e9c)
+
+**Feature Importance:** Maximum Target Value Explanation
+
+From the visualization above, we can see that for the target's maximum value observation, these were the features that most heavily influenced the high predictions, according to LIME: 
+* The item was NOT sold from 'Outlet_Type_Supermarket Types' (2 or 3): a negative influence (-).
+* The item WAS sold from 'Outlet_Type_Supermarket Type1': a POSITIVE influence (+).
+* The Item_MRP was higher than 183.59: a POSITIVE influence (+).
+* The outlet that the item was sold from was NOT 'Outlet_Identifier_OUT0027' (the highest performing outlet, which can be seen in the 'Future Data from Analysis Option' Section at the end of this notebook).
+* The other factors that most heavily influenced the prediction is type of food category that it was not a part of:
+> * NOT a Hard Drinks Item: a negative influence (-).
+> * NOT an item of type 'Others': a POSITIVE influence (+).
+> * NOT a Meat Item: a negative influence (-).
+> * NOT a Household Item: a negative influence (-).
+> * NOT a Bread Item: a POSITIVE influence (+).
+
+#### SHAP Force Plot: Minimum Target Value
+
+![PPS_SHAP_target_min](https://github.com/whitefreeze/Prediction-of-Product-Sales/assets/13343127/7ac81b4d-89e2-481a-b497-a429caa8cf15)
+
+**Feature Importance:** Minimum Target Value Explanation
+
+From the Force Plot visualization above, we can see that for the target's minimum value observation, these were the features that most heavily influenced the low predictions, according to the SHAP Force Plot: 
+* The Item_MRP was 45.14: a negative influence (-).
+* The item was NOT sold from any of the 'Outlet_Type_Supermarket Types' (1,2 or 3): a negative influence (-).
+* The outlet was NOT Outlet_Identifier_OUT018': a negative influence (-).
+
+No positive influences (+) were significant enough to have a label in the visualization. 
+
+#### SHAP Force Plot: Maximum Target Value
+
+![PPS_SHAP_target_max](https://github.com/whitefreeze/Prediction-of-Product-Sales/assets/13343127/c107e6a0-529e-40d7-a807-4f3f72a7a6f6)
+
+**Feature Importance:** Maximum Target Value Explanation
+
+From the Force Plot visualization above, we can see that for the target's maximum value observation, these were the features that most heavily influenced the high predictions, according to the SHAP Force Plot: 
+* The Item_MRP was 261.3: a POSITIVE influence (+).
+* The Item_Visibility was 0.0195: a POSITIVE influence (+).
+* The Outlet_Size was 2: a POSITIVE influence (+).
+* The item WAS sold from 'Outlet_Type_Supermarket Type1': a POSITIVE influence (+).
+* The Item_Fat_Content_Regular was 1 (not low-fat): a POSITIVE influence (+).
+
+No negative influences (-) were significant enough to have a label in the visualization. 
+
+
 ## Limitations & Next Steps
 
 While this model can be useful if implemented in a strategic manner, it would be better to try more models and see if they can perform better than the DecisionTreeRegressor using default hyperparameters. When the best model is found using default hyperparameters, then the hyperparameters of that model should then be tuned in order to maximize the predictive power of the model. 
