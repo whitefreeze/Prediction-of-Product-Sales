@@ -86,13 +86,19 @@ Looking at the top five most important features, we can see the following:
 
 ### SHAP Summary Plots & Interpretations
 
-#### SHAP Bar Plot
+#### Feature Importances: SHAP
 
 ![PPS_SHAP_bar_top5!](https://github.com/whitefreeze/Prediction-of-Product-Sales/assets/13343127/210bd0b3-1f73-4bb9-bbcb-45c40eb5adfe)
 
-**Feature Importance:** SHAP vs Decision Tree Regression Built-in Method
+#### Feature Importances: scikit-learn
 
-Comparing the top five most important features between the SHAP calculations and the Decision Tree Regression's built-in method, we can see that order notwithstanding, the top five are the same, in addition to the top feature ('Item_MRP'), which is the same in both. 
+Using scikit-learn's built-in feature importances attribute (.feature_importances_) for tree-based models.
+
+![PPS_dec_tree_top5!](https://github.com/whitefreeze/Prediction-of-Product-Sales/assets/13343127/0c1c9d00-7391-4ced-a0d5-cac2f60824a3)
+
+**Feature Importance:** SHAP vs scikit-learn's Decision Tree Regression Built-in Method
+
+Comparing the top five most important features between the SHAP calculations and the scikit-learn's built-in Decision Tree Regression  method, we can see that order notwithstanding, the top five are the same, in addition to the top feature ('Item_MRP'), which is the same in both. 
 
 #### SHAP Dot Plot
 
@@ -102,7 +108,7 @@ Comparing the top five most important features between the SHAP calculations and
 
 Let's look at the top three most important features as determined by the SHAP dot plot and see how they influence the model's predictions.
 1. As 'Item_MRP' increases in value, it increases the target ('Item_Outlet_Sales') most drastically.
-2. As 'Outlet_Type_Supermarket Type1' increases in value, only trailing behind 'Item_MRP', it also drastically increases the target ('Item_Outlet_Sales'). 
+2. As 'Outlet_Type_Supermarket Type1' increases in value, it also drastically increases the target ('Item_Outlet_Sales'). 
 3. As 'Outlet_Type_Supermarket Type3' increases, just like the top two, it also strongly increases the value of the target. 
 
 
